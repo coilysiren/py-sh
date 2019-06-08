@@ -42,7 +42,7 @@ I could create this with knowledge I had on hand! This is a nice boost to my ite
 
 It has a few fatal flaws, though. In order of increasing importance:
 
-- There's still quote a bit of "shell invokation boilerplate", in the `'`, `"`, `-c`
+- There's still quote a bit of "shell invocation boilerplate", in the `'`, `"`, `-c`
 - I intend to use this for infra / ops tasks, where you can't ensure that a particular python version will exist + be functional
 - Its excuting a string (`$baseName`) as arbitrary python code, which produces infinitely many attack vectors
 
@@ -52,7 +52,7 @@ That sucks. But wait... those are all engineering problems, and maybe all proble
 
 Spoiler: yes we can solve all those problems! We can create something that:
 
-- Assumes its primary operating mode to be shell invokation (for the purpose of bash scripting)
+- Assumes its primary operating mode to be shell invocation (for the purpose of bash scripting)
 - Includes a static linked python binary
 - And treats its input strictly as a string
 
