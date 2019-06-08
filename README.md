@@ -13,7 +13,7 @@ adminProfileSuffix="AdminRole"
 adminProfile="$baseName$adminProfileSuffix"
 
 # with py-sh
-adminProfile=$(py-sh "input.capitalize() + str(AdminRole)" $baseName)
+adminProfile=$(echo $baseName | py-sh 'input.capitalize() + str(AdminRole)')
 ```
 
 ## Background
@@ -60,6 +60,17 @@ I'm calling that thing `py-sh`, and I want it to work like this
 
 ```sh
 baseName="lynn"
-adminProfile=$(py-sh "input.capitalize() + str(AdminRole)" $baseName)
+adminProfile=$(echo $baseName | py-sh 'input.capitalize() + str(AdminRole)')
 echo $adminProfile # outputs "LynnAdminRole"
 ```
+
+## Prior Art
+
+The overarching goal of `py-sh` is very similar to [xonsh](https://xon.sh/index.html), and [ipython shell](https://ipython.readthedocs.io/en/stable/interactive/shell.html). All 3 (`py-sh`, `xonsh`, `ipython shell`) aim to give users to ability to do "shell work" using python. The contrast significantly in their conceptual API though, `py-sh` is meant to be executed inside your existing shell (eg `bash`, `zsh`, etc) - and `xonsh` / `ipython shell` want to replace your shell.
+
+- Finding out about `xonsh` is what originally inspired to author to start exploring this concept 🗺
+- Adding support for ipython's concept of [magic commands](https://ipython.readthedocs.io/en/stable/interactive/magics.html) is currently under consideration 📝
+
+The API of `py-sh` is functionally identical to [rb](https://github.com/thisredone/rb). The primary difference is in the implementation details, in that `py-sh` aims to ship itself as a binary that also contains a statically linked binary of its underlying language (eg. python).
+
+- The idea to require api input be piped into `py-sh` was inspired by `rb` ✨
