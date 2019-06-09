@@ -3,7 +3,7 @@
 set -euo pipefail
 set -o xtrace
 
-repoName='py-sh'
+name=$1
 
-rm scripts/docker-run-timestamp.txt || true
-docker rm $repoName -f || true
+rm src/docker-run-timestamp.txt || true
+docker rm $name -f || true

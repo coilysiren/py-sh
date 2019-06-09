@@ -12,26 +12,26 @@ set -o xtrace
 #
 # latestBuildId specifically... we should be able to fetch from docker hub,
 # and then manually add a cache busting check?
-repoName='py-sh'
+name=$1
 imageName='lynncyrin/py-sh-prebuild:latest'
-latestBuildId='sha256:77bd6a0a2f86951f840bd34f97a33c7cb1bf3c417ec5f64f5feda4baccbd87a3'
-runningContainersWithOurName=`docker ps --filter "name=$repoName"`
+latestBuildId='sha256:e0751e824ffbf30e6d036b238c6fdbb24f8603e0cdbca1b64d279abd3a4f107c'
+runningContainersWithOurName=`docker ps --filter "name=$name"`
 
 function dockerRun() {
    # run the container
    docker run \
       -itd \
       --network none \
-      --name $repoName \
+      --name $name \
       --mount type=bind,src=`pwd`,dst=/repo \
       --workdir /repo \
       $imageName
    # and set the docker run timestamp
-   touch scripts/docker-run.timestamp.txt
+   touch src/docker-run.timestamp.txt
 }
 
 # check if there is a running containers with our name
-if [[ $runningContainersWithOurName =~ $repoName ]]
+if [[ $runningContainersWithOurName =~ $name ]]
 then
    # there *is* a running containers with our name...
    # so we check to see when it was created,
@@ -40,20 +40,20 @@ then
    # the 0 value here can be thought of an as "invalid container"
    # essentially a container that was created "never" and therefore
    # should always be re-created
-   containerCreationTime=`stat -f %m scripts/docker-run.timestamp.txt || echo "0"`
+   containerCreationTime=`stat -f %m src/docker-run.timestamp.txt || echo "0"`
 
    # when was the build script last modified?
    #
    # there's other things we should check (like the image name, and the repo name?)
    # but that's TODO. for now, run a `make clean` if you change anything weird
-   buildScriptModificationTime=`stat -f %m scripts/build-local-osx.sh`
+   buildScriptModificationTime=`stat -f %m src/build-local-osx.sh`
 
    # check if the build script has been modified since the container was created
    if [[ $buildScriptModificationTime -ge $containerCreationTime ]]
    then
       # the build script *was* modified since the container was created...
       # so we need to reset the container
-      docker rm $repoName -f
+      docker rm $name -f
       dockerRun
    fi
 
@@ -63,5 +63,4 @@ else
    dockerRun
 fi
 
-# container is up! now we can `docker exec...`
-docker exec $repoName scripts/build.sh
+# container is up! now we can `docker exec` in other scripts

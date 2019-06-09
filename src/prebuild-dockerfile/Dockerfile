@@ -5,7 +5,7 @@ WORKDIR /assets
 
 # setup system dependencies
 RUN apt-get update
-RUN apt-get install curl git -y
+RUN apt-get install curl git shellcheck -y
 
 ARG pythonVersion
 
