@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# This script sets up a local build environment meant for rapid iteration
+# that matches the containerized build that'll be happening on CircleCI.
+# It doesn't actually do any of that -yet-, but it will!!!
+#
+# Also this file should be doing a *docker build* not a *docker run*,
+# that will be fixed in the future.
+
 set -euo pipefail
 set -o xtrace
 
@@ -55,4 +62,4 @@ else
 fi
 
 # container is up! now we can `docker exec...`
-docker exec $repoName scripts/test.sh
+docker exec $repoName scripts/build.sh
