@@ -8,10 +8,10 @@ help: # automatically documents the makefile, by outputing everything behind a #
 # 	- docker => `brew cask install docker`
 
 clean: ## 🗑️  Clear local files and assets
-	@./scripts/clean.sh
+	@./src/clean.sh
 
 build: ## ⚙️  Build into local environment - for osx
-	@./scripts/build-local-osx.sh
+	@./src/build-local-osx.sh
 
 test: build ## ✅ Run all checks - tests, linters, etc.
-	@./scripts/test.sh
+	@./src/test.sh
