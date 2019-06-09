@@ -27,7 +27,7 @@ function dockerRun() {
       --workdir /repo \
       $imageName
    # and set the docker run timestamp
-   touch scripts/docker-run-timestamp.txt
+   touch scripts/docker-run.timestamp.txt
 }
 
 # check if there is a running containers with our name
@@ -40,7 +40,7 @@ then
    # the 0 value here can be thought of an as "invalid container"
    # essentially a container that was created "never" and therefore
    # should always be re-created
-   containerCreationTime=`stat -f %m scripts/docker-run-timestamp.txt || echo "0"`
+   containerCreationTime=`stat -f %m scripts/docker-run.timestamp.txt || echo "0"`
 
    # when was the build script last modified?
    #
