@@ -1,4 +1,6 @@
 .DEFAULT_GOAL := help
+
+# grab the repo name from the git origin
 name := `git remote get-url origin | sed -e 's/.*\///' | sed -e 's/.git//'`
 
 help: # automatically documents the makefile, by outputing everything behind a ##
