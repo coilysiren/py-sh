@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:18.04
+      - image: lynncyrin/py-sh-prebuild:latest
     steps:
       - checkout
       - run: ./scripts/build.sh
