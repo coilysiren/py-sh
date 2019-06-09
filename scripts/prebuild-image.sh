@@ -8,11 +8,11 @@ set -o xtrace
 
 # create local prebuild image
 docker build \
-  -f scripts/pre-build-image-dockerfile/Dockerfile \
+  -f scripts/prebuild-image-dockerfile/Dockerfile \
   -t lynncyrin/py-sh-prebuild:latest \
-  scripts/pre-build-image-dockerfile/
+  scripts/prebuild-image-dockerfile/
 
-# push to
+# push to docker hub
 docker push lynncyrin/py-sh-prebuild:latest
 
 # update latestBuildId in build-local-osx so that it cache busts

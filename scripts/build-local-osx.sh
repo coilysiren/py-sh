@@ -6,8 +6,10 @@
 set -euo pipefail
 set -o xtrace
 
+# all of the possible requirements that could change the output of `make build`
+# need to be denormalized into this file
 repoName='py-sh'
-imageName='ubuntu:18.04'
+imageName='lynncyrin/py-sh-prebuild:latest'
 latestBuildId='48d62bab9f5eb8199d02b7eb6830b27a71a552ad2c4ca00865839b49d129adf3'
 runningContainersWithMyName=`docker ps --filter "name=$repoName"`
 thisPwd=`pwd` # its slightly more readable to store pwd inside a variable
@@ -18,8 +20,8 @@ function dockerRun() {
       -itd \
       --network none \
       --name $repoName \
-      --volume $thisPwd:$thisPwd \
-      --workdir $thisPwd \
+      --mount type=bind,src=`pwd`,dst=/repo \
+      --workdir /repo \
       $imageName
    # and set the docker run timestamp
    touch scripts/docker-run-timestamp.txt
