@@ -1,3 +1,0 @@
-# repo metadata
-name: py-sh
-baseImage: circleci/python

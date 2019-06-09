@@ -3,4 +3,5 @@
 set -euo pipefail
 set -o xtrace
 
-ls
+
+curl https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz --output python.tgz

@@ -2,16 +2,13 @@
 
 # This script sets up a local build environment meant for rapid iteration
 # that matches the containerized build that'll be happening on CircleCI.
-# It doesn't actually do any of that -yet-, but it will!!!
-#
-# Also this file should be doing a *docker build* not a *docker run*,
-# that will be fixed in the future.
 
 set -euo pipefail
 set -o xtrace
 
-repoName=`yq r repo.yml name`
-imageName=`yq r repo.yml baseImage`
+repoName='py-sh'
+imageName='ubuntu:18.04'
+latestBuildId='48d62bab9f5eb8199d02b7eb6830b27a71a552ad2c4ca00865839b49d129adf3'
 runningContainersWithMyName=`docker ps --filter "name=$repoName"`
 thisPwd=`pwd` # its slightly more readable to store pwd inside a variable
 
