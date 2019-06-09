@@ -6,11 +6,12 @@
 set -euo pipefail
 set -o xtrace
 
-# all of the possible requirements that could change the output of `make build`
-# need to be denormalized into this file. Some variables (like latestBuildId)
-# are purely used for cache busting.
+# Anything that could change the output of `make build` needs to be
+# denormalized into this file. Some variables (like latestBuildId) in
+# this file are purely used for cache busting.
 #
-# actually... we should be able to get the latest build id programmatically somehow?
+# latestBuildId specifically... we should be able to fetch from docker hub,
+# and then manually add a cache busting check?
 repoName='py-sh'
 imageName='lynncyrin/py-sh-prebuild:latest'
 latestBuildId='sha256:77bd6a0a2f86951f840bd34f97a33c7cb1bf3c417ec5f64f5feda4baccbd87a3'
