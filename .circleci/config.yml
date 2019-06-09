@@ -1,9 +1,10 @@
 version: 2
 
 jobs:
-  build:
+  all:
     docker:
       - image: circleci/python
     steps:
       - checkout
-      - run: ls
+      - run: make build
+      - run: make test
