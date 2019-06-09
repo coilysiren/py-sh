@@ -14,7 +14,7 @@ set -o xtrace
 repoName='py-sh'
 imageName='lynncyrin/py-sh-prebuild:latest'
 latestBuildId='sha256:77bd6a0a2f86951f840bd34f97a33c7cb1bf3c417ec5f64f5feda4baccbd87a3'
-runningContainersWithMyName=`docker ps --filter "name=$repoName"`
+runningContainersWithOurName=`docker ps --filter "name=$repoName"`
 
 function dockerRun() {
    # run the container
@@ -29,10 +29,10 @@ function dockerRun() {
    touch scripts/docker-run-timestamp.txt
 }
 
-# check if there is a running containers with my name
-if [[ $runningContainersWithMyName =~ $repoName ]]
+# check if there is a running containers with our name
+if [[ $runningContainersWithOurName =~ $repoName ]]
 then
-   # there *is* a running containers with my name...
+   # there *is* a running containers with our name...
    # so we check to see when it was created,
    # and compare that against the build requirements
 
@@ -57,7 +57,7 @@ then
    fi
 
 else
-   # there is not* a running containers with my name...
+   # there is *not* a running container with our name...
    # so we create one
    dockerRun
 fi
