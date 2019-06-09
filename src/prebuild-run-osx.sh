@@ -46,7 +46,7 @@ then
    #
    # there's other things we should check (like the image name, and the repo name?)
    # but that's TODO. for now, run a `make clean` if you change anything weird
-   buildScriptModificationTime=`stat -f %m src/build-local-osx.sh`
+   buildScriptModificationTime=`stat -f %m src/prebuild-run-osx.sh`
 
    # check if the build script has been modified since the container was created
    if [[ $buildScriptModificationTime -ge $containerCreationTime ]]
