@@ -5,7 +5,6 @@ help: # automatically documents the makefile, by outputing everything behind a #
 
 # Prereqs:
 # 	- homebrew => https://brew.sh/
-# 	-	yq => `brew install yq`
 # 	- docker => `brew cask install docker`
 
 clean: ## 🗑️  Clear local files and assets
