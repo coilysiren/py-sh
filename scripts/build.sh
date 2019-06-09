@@ -3,4 +3,6 @@
 set -euo pipefail
 set -o xtrace
 
-ls
+ls /assets/python/
+
+# NEXT UP! compile python

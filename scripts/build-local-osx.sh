@@ -7,12 +7,14 @@ set -euo pipefail
 set -o xtrace
 
 # all of the possible requirements that could change the output of `make build`
-# need to be denormalized into this file
+# need to be denormalized into this file. Some variables (like latestBuildId)
+# are purely used for cache busting.
+#
+# actually... we should be able to get the latest build id programmatically somehow?
 repoName='py-sh'
 imageName='lynncyrin/py-sh-prebuild:latest'
-latestBuildId='48d62bab9f5eb8199d02b7eb6830b27a71a552ad2c4ca00865839b49d129adf3'
+latestBuildId='sha256:d263968d5f30353c07d2d17e851271151c93025c9f6b3ca5c0fc8a1adf89b41c'
 runningContainersWithMyName=`docker ps --filter "name=$repoName"`
-thisPwd=`pwd` # its slightly more readable to store pwd inside a variable
 
 function dockerRun() {
    # run the container
