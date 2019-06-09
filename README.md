@@ -21,10 +21,10 @@ adminProfile=$(echo $baseName | py-sh 'input.capitalize() + str(AdminRole)')
 `py-sh` version `1.0` is...
 
 ```
-000.0%
+001.0%
 ```
 
-...implemented. 
+...implemented.
 
 ## Background
 
@@ -56,7 +56,7 @@ It has a few fatal flaws, though. In order of increasing importance:
 - I intend to use this for infra / ops tasks, where you can't ensure that a particular python version will exist + be functional
 - Its excuting a string (`$baseName`) as arbitrary python code, which produces infinitely many attack vectors
 
-That sucks. But wait... those are all engineering problems, and maybe all problems that can be solved??? 
+That sucks. But wait... those are all engineering problems, and maybe all problems that can be solved???
 
 ## The Goal
 
