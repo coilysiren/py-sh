@@ -13,7 +13,7 @@ set -o xtrace
 # actually... we should be able to get the latest build id programmatically somehow?
 repoName='py-sh'
 imageName='lynncyrin/py-sh-prebuild:latest'
-latestBuildId='sha256:cef2f88fa3d5e8d7796f088f645cac3f22897f0e99271ecd8af449e30f676254'
+latestBuildId='sha256:77bd6a0a2f86951f840bd34f97a33c7cb1bf3c417ec5f64f5feda4baccbd87a3'
 runningContainersWithMyName=`docker ps --filter "name=$repoName"`
 
 function dockerRun() {
