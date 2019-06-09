@@ -5,7 +5,8 @@ WORKDIR /assets
 
 # setup system dependencies
 RUN apt-get update
-RUN apt-get install curl git -y
+# TODO: move these into an ubuntu dev buildpack
+RUN apt-get install curl git shellcheck -y
 
 ARG pythonVersion
 

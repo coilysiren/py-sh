@@ -11,9 +11,9 @@ pythonVersion="3.7.3"
 
 # create local prebuild image
 docker build \
-  -f scripts/prebuild-dockerfile/Dockerfile \
+  -f src/prebuild-dockerfile/Dockerfile \
   -t lynncyrin/py-sh-prebuild:latest \
   --build-arg pythonVersion=$pythonVersion \
-  scripts/prebuild-dockerfile/
+  src/prebuild-dockerfile/
 
-echo "run ./scripts/prebuild-push.sh to push the created image"
+echo "run ./src/prebuild-push.sh to push the created image"

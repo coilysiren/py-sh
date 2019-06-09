@@ -3,4 +3,4 @@
 set -euo pipefail
 set -o xtrace
 
-ls
+shellcheck src/*.sh

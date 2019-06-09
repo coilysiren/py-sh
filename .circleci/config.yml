@@ -6,5 +6,5 @@ jobs:
       - image: lynncyrin/py-sh-prebuild:latest
     steps:
       - checkout
-      - run: ./scripts/build.sh
-      - run: ./scripts/test.sh
+      - run: ./src/build.sh
+      - run: ./src/test.sh

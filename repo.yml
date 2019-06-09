@@ -1,0 +1,3 @@
+# repo metadata
+name: py-sh
+buildpack: lynncyrin/py-sh-prebuild:latest

@@ -6,12 +6,14 @@ help: # automatically documents the makefile, by outputing everything behind a #
 # Prereqs:
 # 	- homebrew => https://brew.sh/
 # 	- docker => `brew cask install docker`
+# 	- yq => `brew install yq`
 
 clean: ## 🗑️  Clear local files and assets
-	@./scripts/clean.sh
+	@./src/clean.sh $(name)
 
 build: ## ⚙️  Build into local environment - for osx
-	@./scripts/build-local-osx.sh
+	@./src/prebuild-run-osx.sh $(name)
+	docker exec $(name) src/build.sh
 
 test: build ## ✅ Run all checks - tests, linters, etc.
-	@./scripts/test.sh
+	docker exec $(name) src/test.sh
