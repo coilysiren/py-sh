@@ -13,7 +13,7 @@ set -o xtrace
 # latestBuildId specifically... we should be able to fetch from docker hub,
 # and then manually add a cache busting check?
 name=$1
-imageName='lynncyrin/py-sh-prebuild:latest'
+buildpack=`yq r repo.yml buildpack`
 latestBuildId='sha256:e0751e824ffbf30e6d036b238c6fdbb24f8603e0cdbca1b64d279abd3a4f107c'
 runningContainersWithOurName=`docker ps --filter "name=$name"`
 
@@ -25,7 +25,7 @@ function dockerRun() {
       --name $name \
       --mount type=bind,src=`pwd`,dst=/repo \
       --workdir /repo \
-      $imageName
+      $buildpack
    # and set the docker run timestamp
    touch src/docker-run.timestamp.txt
 }
