@@ -18,15 +18,21 @@ docker build \
 
 echo "image built!"
 
+mkdir -p src/generated
+
+docker stop py-sh-prebuild || true
+docker rm py-sh-prebuild || true
+
 docker run \
   -itd \
   --network none \
   --name py-sh-prebuild \
   lynncyrin/py-sh-prebuild
 
-docker cp py-sh-prebuild:/assets/python/Makefile "$(pwd)"/src/Makefile
+docker cp py-sh-prebuild:/assets/python/Makefile "$(pwd)"/src/generated/Makefile
 
-docker stop py-sh-prebuild
+docker stop py-sh-prebuild || true
+docker rm py-sh-prebuild || true
 
 echo "makefile copied!"
 
