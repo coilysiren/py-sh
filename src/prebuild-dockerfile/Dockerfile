@@ -6,7 +6,7 @@ WORKDIR /assets
 # setup system dependencies
 RUN apt-get update
 # TODO: move these into an ubuntu dev buildpack
-RUN apt-get install curl git shellcheck -y
+RUN apt-get install curl git shellcheck build-essential -y
 
 ARG pythonVersion
 
@@ -17,3 +17,6 @@ RUN ls python.tgz
 # rename to a generic name
 RUN tar -xf /assets/python.tgz --directory /assets
 RUN mv /assets/Python-$pythonVersion/ /assets/python/
+
+WORKDIR /assets/python/
+RUN ./configure
