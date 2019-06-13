@@ -24,7 +24,7 @@ docker run \
   --name py-sh-prebuild \
   lynncyrin/py-sh-prebuild
 
-docker cp py-sh-prebuild:/assets/python/Makefile `pwd`/src/Makefile
+docker cp py-sh-prebuild:/assets/python/Makefile "$(pwd)"/src/Makefile
 
 docker stop py-sh-prebuild
 
