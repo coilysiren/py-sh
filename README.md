@@ -2,9 +2,9 @@
 
 A static binary for during your shell grunt work in python
 
-## API Comparison
+## Overview
 
-Right up front, here's the value proposition =>
+Here's your value proposition, compared with writing bash scripts
 
 ```bash
 # with bash / coreutils
