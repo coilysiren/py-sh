@@ -16,7 +16,7 @@ adminProfile="$baseName$adminProfileSuffix"
 adminProfile=$(echo $baseName | py-sh 'input.capitalize() + str(AdminRole)')
 ```
 
-## Progression
+## Status
 
 `py-sh` version `1.0` is...
 
