@@ -1,6 +1,6 @@
 # py-sh
 
-A binary for during your shell grunt work in python
+A binary for doing your shell grunt work in python
 
 ## Overview
 
