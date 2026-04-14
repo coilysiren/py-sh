@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: lynncyrin/py-sh-prebuild:latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./src/build.sh
+      - run: ./src/test.sh
