@@ -1,5 +1,9 @@
 # py-sh
 
+> [!NOTE]
+> **This repo is archived. Use [hauntsaninja/pyp](https://github.com/hauntsaninja/pyp) instead.**
+> `pyp` is a mature, actively maintained tool that does exactly what `py-sh` set out to do — run Python one-liners as part of shell pipelines, with auto-imports, stdin wiring, and an `--explain` mode.
+
 A binary for during your shell grunt work in python
 
 ## Overview
